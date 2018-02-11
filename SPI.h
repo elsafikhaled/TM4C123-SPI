@@ -8,12 +8,12 @@ void SPI_Master_init(void);
 -prescaler:CPSDVSR
 -register that has bitrate value is :SCR
 
-#default::CPSDVSR=0x2, SCR must be 0x9.
+#default::CPSDVSR=0x2, SCR must be 0x2.
 
-#Assuming the system clock is 20 MHz, the bit rate calculation would be:
-SSIClk = SysClk / (CPSDVSR * (1 + SCR))
-1x106 = 20x106 / (CPSDVSR * (1 + SCR))
-In this case, if CPSDVSR=0x2, SCR must be 0x9.
+#Assuming the system clock is 16 MHz, the bit rate calculation would be:
+SSIClk = SysClk  / (CPSDVSR * (1 + SCR))
+3x10^6 = 16x10^6 / (CPSDVSR * (1 + SCR))
+In this case, if CPSDVSR=0x2, SCR must be 0x2.
 
 ********************************************************************************/
 

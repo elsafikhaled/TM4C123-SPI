@@ -19,7 +19,7 @@
 #define GPIO_PORTA_AHPB_BASE 0x40058000
 
 // APB:advanced peripheral Bus
-#define GPIO_PORTA_DATA              *((volatile U32_t *)0x400043FC)
+#define GPIO_PORTA_DATA              *((volatile U32_t *)0x40004000)
 #define GPIO_PORTA_DIR               *((volatile U32_t *)0x40004400)
 #define GPIO_PORTA_INTSEN            *((volatile U32_t *)0x40004404)
 #define GPIO_PORTA_INTBEDG           *((volatile U32_t *)0x40004408)

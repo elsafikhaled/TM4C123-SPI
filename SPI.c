@@ -18,10 +18,10 @@ SSICR1&=~(1<<2);
 SSICC=0x00; 	
 //configure the bitRate according to HW component this is default.
 SSICPSR=0x02;
-SSICR0|=0x09000000;
+SSICR0|=0x00000700;
 //phase-data captured at first edge transition "rising edge".
 SSICR0&=~(1<<7);
-//SSI Serial Clock Polarity-LOW in steady state.
+//SSI Serial Clock Polarity-low in steady state.
 SSICR0&=~(1<<6);
 //Freescale SPI Frame Format
 SSICR0&=~((1<<4)|(1<<5));
@@ -48,7 +48,7 @@ SSICR1|=(1<<2);
 SSICC=0x00; 	
 //configure the bitRate according to HW component this is default.
 SSICPSR=0x02;
-SSICR0|=0x09000000;
+SSICR0|=0x00000700;
 //phase-data captured at first edge transition "rising edge".
 SSICR0&=~(1<<7);
 //SSI Serial Clock Polarity-LOW in steady state.
@@ -70,9 +70,10 @@ void SPI_SendData(U16_t data){
 //select slave.
 GPIO_SPI_SS_LOW();
 //SSI Transmit * check FIFO Not Full / can use SSI Busy Bit to check if data sent after writing to SSIDR.
-while(!(SSISR&(1<<1)));
+while((SSISR&(1<<4)));
 //send 16 bit data or less to FIFO
 SSIDR=data;	
+while((SSISR&(1<<4)));
 //left the slave.
 GPIO_SPI_SS_IDL();
 	

@@ -1,10 +1,10 @@
 #include "HW_gpio.h"
 #include "GPIO_SPI.h"
-
+#include "SysCtrl.h"
 
 void GPIO_Spi0(SpiSelect_m mode){
 //test mode
-    //Clock enable portA.
+  //Clock enable portA.
 	clock_Enable_PORT(Clock_PortA);
 	//Open lock
 	GPIO_PORTA_lock=0x4c4f434b;
